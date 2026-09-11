@@ -1,0 +1,142 @@
+\renewcommand{\arraystretch}{1.2} % Increase the row height to facilitate the reading. Default value: 1
+\begin{table}[!h]
+\centering
+\caption{Performance comparison (mean $\pm$ std) across models using class-wise F1-score, Recall, General Accuracy and Macro-F1 --- ECGFounder encoder. \textbf{Bold} and \underline{underline} values indicate the model with the best and second-best metric for that class, respectively.}
+\label{tab:results_ecgfounder}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccccccc}
+\toprule
+\multirow{2}{*}{Model}
+& \multicolumn{2}{c}{NORM (1004)}
+& \multicolumn{2}{c}{MI (544)}
+& \multicolumn{2}{c}{STTC (283)}
+& \multicolumn{2}{c}{CD (122)}
+& \multicolumn{2}{c}{HYP (245)} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
+& F1 & Recall
+& F1 & Recall
+& F1 & Recall
+& F1 & Recall
+& F1 & Recall \\
+\midrule
+
+ECG Only &
+0.863$\pm$0.003 & 0.924$\pm$0.010 &
+0.715$\pm$0.017 & 0.630$\pm$0.043 &
+0.734$\pm$0.014 & 0.688$\pm$0.031 &
+0.748$\pm$0.009 & 0.658$\pm$0.023 &
+0.413$\pm$0.029 & 0.295$\pm$0.035 \\
+
+ECG+Attr &
+0.870$\pm$0.005 & 0.897$\pm$0.018 &
+0.754$\pm$0.018 & 0.686$\pm$0.037 &
+0.733$\pm$0.016 & 0.678$\pm$0.037 &
+0.743$\pm$0.017 & 0.655$\pm$0.046 &
+0.418$\pm$0.043 & 0.296$\pm$0.049 \\
+
+CLIC-DtT &
+\underline{0.877$\pm$0.004} & 0.909$\pm$0.014 &
+0.773$\pm$0.009 & 0.715$\pm$0.033 &
+0.747$\pm$0.009 & 0.691$\pm$0.031 &
+0.743$\pm$0.015 & 0.643$\pm$0.031 &
+0.516$\pm$0.060 & 0.391$\pm$0.084 \\
+
+CLIC-LLM &
+0.875$\pm$0.003 & 0.921$\pm$0.012 &
+0.753$\pm$0.017 & 0.675$\pm$0.049 &
+0.735$\pm$0.014 & 0.673$\pm$0.037 &
+0.739$\pm$0.014 & 0.643$\pm$0.030 &
+0.438$\pm$0.067 & 0.315$\pm$0.070 \\
+
+CLIC-DtT-TextOnly &
+--- & --- &
+--- & --- &
+--- & --- &
+--- & --- &
+--- & --- \\
+
+CLIC-LLM-TextOnly &
+--- & --- &
+--- & --- &
+--- & --- &
+--- & --- &
+--- & --- \\
+
+CLIC-DtT-Finetuning &
+0.874$\pm$0.003 & \underline{0.900$\pm$0.017} &
+\underline{0.776$\pm$0.011} & \textbf{0.727$\pm$0.027} &
+\textbf{0.757$\pm$0.016} & \underline{0.717$\pm$0.048} &
+\textbf{0.756$\pm$0.015} & \textbf{0.685$\pm$0.028} &
+\textbf{0.563$\pm$0.018} & \textbf{0.443$\pm$0.023} \\
+
+CLIC-LLM-Finetuning &
+\textbf{0.878$\pm$0.004} & 0.903$\pm$0.015 &
+\textbf{0.779$\pm$0.011} & \underline{0.720$\pm$0.029} &
+\underline{0.751$\pm$0.010} & \textbf{0.718$\pm$0.043} &
+\underline{0.754$\pm$0.013} & \underline{0.669$\pm$0.034} &
+\underline{0.530$\pm$0.044} & \underline{0.408$\pm$0.061} \\
+
+CLIC-DtT-2Layer-FT &
+0.823$\pm$0.004 & \textbf{0.944$\pm$0.028} &
+0.688$\pm$0.027 & 0.578$\pm$0.045 &
+0.597$\pm$0.039 & 0.479$\pm$0.049 &
+0.639$\pm$0.023 & 0.512$\pm$0.032 &
+0.361$\pm$0.062 & 0.237$\pm$0.049 \\
+
+CLIC-LLM-2Layer-FT &
+0.815$\pm$0.013 & \underline{0.943$\pm$0.019} &
+0.654$\pm$0.047 & 0.531$\pm$0.071 &
+0.562$\pm$0.059 & 0.444$\pm$0.054 &
+0.578$\pm$0.016 & 0.431$\pm$0.018 &
+0.356$\pm$0.060 & 0.236$\pm$0.054 \\
+
+\midrule
+\multicolumn{11}{c}{\textbf{Overall Performance}} \\
+\midrule
+
+\multicolumn{1}{l}{Metric}
+& \multicolumn{1}{c}{\scriptsize ECG Only}
+& \multicolumn{1}{c}{\scriptsize ECG+Attr}
+& \multicolumn{1}{c}{\scriptsize CLIC-DtT}
+& \multicolumn{1}{c}{\scriptsize CLIC-LLM}
+& \multicolumn{1}{c}{\scriptsize DtT-Text}
+& \multicolumn{1}{c}{\scriptsize LLM-Text}
+& \multicolumn{1}{c}{\scriptsize DtT-Fine}
+& \multicolumn{1}{c}{\scriptsize LLM-Fine}
+& \multicolumn{1}{c}{\scriptsize DtT-2L}
+& \multicolumn{1}{c}{\scriptsize LLM-2L} \\
+\cmidrule(lr){1-1} \cmidrule(lr){2-11}
+
+Macro-F1 &
+0.695$\pm$0.007 &
+0.704$\pm$0.008 &
+0.731$\pm$0.011 &
+0.708$\pm$0.016 &
+--- &
+--- &
+\textbf{0.745$\pm$0.003} &
+\underline{0.738$\pm$0.012} &
+0.621$\pm$0.023 &
+0.593$\pm$0.023 \\
+
+Gen. Acc. &
+--- & --- & --- & --- & --- & --- & --- & --- & --- & --- \\
+
+\bottomrule
+\end{tabular}
+}
+\end{table}
+% NOTA 1: linhas CLIC-DtT-TextOnly / CLIC-LLM-TextOnly em branco --
+% experimentos ja preparados (runs/ecgfounder/main_experiments_dtt_textonly.py
+% e main_experiments_llm_textonly.py), faltando so rodar e preencher.
+%
+% NOTA 2: "Gen. Acc." em branco -- pipeline atual (engine/evaluate.py) nao
+% calcula essa metrica (classification_report multilabel do sklearn nao gera
+% chave "accuracy"). Precisaria ser adicionada e os checkpoints reavaliados.
+%
+% NOTA 3 (IMPORTANTE): CLIC-DtT-2Layer-FT e CLIC-LLM-2Layer-FT tem
+% desempenho pior que ate o ECG Only em quase toda classe (mesmo residuo do
+% finetuning parcial do ECGFounder ja sinalizado na tabela de AUROC) --
+% Recall de NORM artificialmente alto (0.94x) mas F1 baixo indica o modelo
+% super-prevendo NORM as custas das outras classes, um sinal classico de
+% descalibracao. Ver NOTA 2 da tabela tabela_ecgfounder_auroc.tex.

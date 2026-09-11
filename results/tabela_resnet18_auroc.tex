@@ -1,0 +1,48 @@
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[!h]
+\centering
+\caption{Class-wise and macro AUROC (mean $\pm$ std) --- ResNet18 encoder. \textbf{Bold} and \underline{underline} values indicate the best and second-best model for that column, respectively.}
+\label{tab:results_resnet18_auroc}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccc}
+\toprule
+Model & NORM (1004) & MI (544) & STTC (283) & CD (122) & HYP (245) & Macro-AUROC \\
+\midrule
+
+ECG Only &
+0.946$\pm$0.003 & 0.927$\pm$0.004 & 0.925$\pm$0.003 & 0.916$\pm$0.002 & 0.887$\pm$0.004 & 0.920$\pm$0.001 \\
+
+ECG+Attr &
+\underline{0.951$\pm$0.003} & 0.932$\pm$0.006 & 0.921$\pm$0.004 & 0.911$\pm$0.005 & 0.890$\pm$0.010 & 0.921$\pm$0.003 \\
+
+CLIC-DtT &
+\textbf{0.952$\pm$0.002} & 0.934$\pm$0.007 & 0.928$\pm$0.003 & 0.911$\pm$0.006 & 0.896$\pm$0.006 & 0.924$\pm$0.002 \\
+
+CLIC-LLM &
+0.949$\pm$0.001 & 0.935$\pm$0.004 & 0.923$\pm$0.003 & 0.906$\pm$0.002 & 0.891$\pm$0.006 & 0.921$\pm$0.002 \\
+
+CLIC-DtT-TextOnly &
+--- & --- & --- & --- & --- & --- \\
+
+CLIC-LLM-TextOnly &
+--- & --- & --- & --- & --- & --- \\
+
+CLIC-DtT-Finetuning &
+\textbf{0.952$\pm$0.001} & 0.941$\pm$0.002 & 0.928$\pm$0.002 & 0.911$\pm$0.003 & \underline{0.900$\pm$0.003} & \underline{0.926$\pm$0.001} \\
+
+CLIC-LLM-Finetuning &
+0.950$\pm$0.001 & \textbf{0.942$\pm$0.002} & \underline{0.930$\pm$0.001} & \underline{0.917$\pm$0.002} & 0.896$\pm$0.006 & \underline{0.927$\pm$0.002} \\
+
+CLIC-DtT-2Layer-FT &
+0.951$\pm$0.001 & 0.941$\pm$0.002 & 0.928$\pm$0.002 & 0.909$\pm$0.001 & \textbf{0.901$\pm$0.011} & \underline{0.926$\pm$0.002} \\
+
+CLIC-LLM-2Layer-FT &
+0.951$\pm$0.001 & \underline{0.942$\pm$0.001} & \textbf{0.930$\pm$0.001} & \textbf{0.919$\pm$0.001} & 0.897$\pm$0.004 & \textbf{0.928$\pm$0.001} \\
+
+\bottomrule
+\end{tabular}
+}
+\end{table}
+% NOTA: linhas CLIC-DtT-TextOnly / CLIC-LLM-TextOnly em branco --
+% experimentos ja preparados (runs/ecgfounder/main_experiments_dtt_textonly.py
+% e main_experiments_llm_textonly.py), faltando so rodar e preencher.

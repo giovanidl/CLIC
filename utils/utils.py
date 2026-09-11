@@ -72,6 +72,29 @@ def keep_top_files(folder_path, top_x):
         #logging.warning(f"Delete File: {file}")
 
 
+def find_best_checkpoint(save_dir, ckpt_name, n_runs, device="cpu"):
+    """Entre os checkpoints run1_{ckpt_name} ... run{n_runs}_{ckpt_name}
+    salvos por experiments.runner.run_experiment, retorna o caminho do que
+    tem o maior 'monitor_val' (ex: val_auroc) — usado pra warm-start de
+    outro experimento a partir do melhor entre as N runs, em vez de uma
+    run escolhida arbitrariamente.
+    """
+    best_path, best_score = None, float("-inf")
+    for run in range(1, n_runs + 1):
+        path = os.path.join(save_dir, f"run{run}_{ckpt_name}")
+        if not os.path.exists(path):
+            continue
+        score = torch.load(path, map_location=device, weights_only=False)["monitor_val"]
+        if score > best_score:
+            best_path, best_score = path, score
+
+    if best_path is None:
+        raise FileNotFoundError(
+            f"Nenhum checkpoint run1..{n_runs}_{ckpt_name} encontrado em {save_dir}"
+        )
+    return best_path
+
+
 def get_smallest_loss_model_path(folder_path):
     """ 获取最小损失模型的文件绝对路径 """
     # 获取文件夹中的所有文件
