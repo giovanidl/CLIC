@@ -1,0 +1,138 @@
+\renewcommand{\arraystretch}{1.2} % Increase the row height to facilitate the reading. Default value: 1
+\begin{table}[!h]
+\centering
+\caption{Performance comparison (mean $\pm$ std) across models using class-wise F1-score, Recall, Macro-F1 and Macro-AUROC --- ResNet18 encoder. \textbf{Bold} and \underline{underline} values indicate the model with the best and second-best metric for that class, respectively.}
+\label{tab:results_resnet18}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccccccc}
+\toprule
+\multirow{2}{*}{Model}
+& \multicolumn{2}{c}{NORM (1004)}
+& \multicolumn{2}{c}{MI (544)}
+& \multicolumn{2}{c}{STTC (283)}
+& \multicolumn{2}{c}{CD (122)}
+& \multicolumn{2}{c}{HYP (245)} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
+& F1 & Recall
+& F1 & Recall
+& F1 & Recall
+& F1 & Recall
+& F1 & Recall \\
+\midrule
+
+ECG Only &
+0.852$\pm$0.007 & \underline{0.856$\pm$0.035} &
+0.739$\pm$0.020 & 0.695$\pm$0.062 &
+0.753$\pm$0.006 & \textbf{0.762$\pm$0.036} &
+0.742$\pm$0.015 & 0.663$\pm$0.037 &
+0.557$\pm$0.034 & \underline{0.461$\pm$0.057} \\
+
+ECG+Attr &
+0.867$\pm$0.007 & 0.885$\pm$0.026 &
+0.755$\pm$0.009 & 0.702$\pm$0.051 &
+0.741$\pm$0.015 & 0.706$\pm$0.037 &
+0.697$\pm$0.029 & 0.568$\pm$0.048 &
+0.451$\pm$0.045 & 0.316$\pm$0.049 \\
+
+CLIC-DtT &
+0.866$\pm$0.004 & 0.863$\pm$0.018 &
+0.762$\pm$0.024 & 0.730$\pm$0.056 &
+0.745$\pm$0.018 & 0.684$\pm$0.034 &
+\underline{0.747$\pm$0.013} & \textbf{0.669$\pm$0.039} &
+0.452$\pm$0.061 & 0.309$\pm$0.059 \\
+
+CLIC-LLM &
+0.859$\pm$0.009 & 0.867$\pm$0.044 &
+0.748$\pm$0.023 & 0.680$\pm$0.068 &
+0.753$\pm$0.007 & 0.736$\pm$0.026 &
+0.688$\pm$0.041 & 0.569$\pm$0.076 &
+0.482$\pm$0.082 & 0.347$\pm$0.090 \\
+
+CLIC-DtT-TextOnly &
+0.679$\pm$0.066 & 0.661$\pm$0.157 &
+0.616$\pm$0.016 & 0.531$\pm$0.031 &
+0.278$\pm$0.073 & 0.177$\pm$0.055 &
+0.000$\pm$0.000 & 0.000$\pm$0.000 &
+0.233$\pm$0.095 & 0.140$\pm$0.065 \\
+
+CLIC-LLM-TextOnly &
+0.711$\pm$0.006 & 0.766$\pm$0.039 &
+0.561$\pm$0.013 & 0.449$\pm$0.023 &
+0.107$\pm$0.073 & 0.061$\pm$0.049 &
+0.000$\pm$0.000 & 0.000$\pm$0.000 &
+0.002$\pm$0.003 & 0.001$\pm$0.002 \\
+
+CLIC-DtT-Finetuning &
+\textbf{0.874$\pm$0.003} & \textbf{0.894$\pm$0.013} &
+0.776$\pm$0.003 & 0.740$\pm$0.012 &
+\underline{0.770$\pm$0.006} & \underline{0.754$\pm$0.017} &
+0.733$\pm$0.017 & 0.621$\pm$0.032 &
+\textbf{0.576$\pm$0.031} & \textbf{0.450$\pm$0.047} \\
+
+CLIC-LLM-Finetuning &
+0.868$\pm$0.003 & \underline{0.893$\pm$0.014} &
+\textbf{0.778$\pm$0.003} & \underline{0.748$\pm$0.012} &
+0.746$\pm$0.007 & 0.687$\pm$0.017 &
+0.739$\pm$0.011 & 0.648$\pm$0.038 &
+0.572$\pm$0.031 & 0.432$\pm$0.070 \\
+
+CLIC-DtT-2Layer-FT &
+\underline{0.873$\pm$0.004} & \underline{0.893$\pm$0.014} &
+\underline{0.776$\pm$0.005} & \textbf{0.754$\pm$0.012} &
+\textbf{0.767$\pm$0.004} & 0.751$\pm$0.016 &
+\textbf{0.753$\pm$0.012} & \underline{0.657$\pm$0.023} &
+0.567$\pm$0.043 & 0.440$\pm$0.061 \\
+
+CLIC-LLM-2Layer-FT &
+0.867$\pm$0.003 & \textbf{0.902$\pm$0.023} &
+0.772$\pm$0.012 & 0.738$\pm$0.045 &
+0.756$\pm$0.010 & 0.702$\pm$0.031 &
+0.744$\pm$0.013 & 0.642$\pm$0.031 &
+\underline{0.573$\pm$0.055} & 0.433$\pm$0.070 \\
+
+\midrule
+\multicolumn{11}{c}{\textbf{Overall Performance}} \\
+\midrule
+
+\multicolumn{1}{l}{Metric}
+& \multicolumn{1}{c}{\scriptsize ECG Only}
+& \multicolumn{1}{c}{\scriptsize ECG+Attr}
+& \multicolumn{1}{c}{\scriptsize CLIC-DtT}
+& \multicolumn{1}{c}{\scriptsize CLIC-LLM}
+& \multicolumn{1}{c}{\scriptsize DtT-Text}
+& \multicolumn{1}{c}{\scriptsize LLM-Text}
+& \multicolumn{1}{c}{\scriptsize DtT-Fine}
+& \multicolumn{1}{c}{\scriptsize LLM-Fine}
+& \multicolumn{1}{c}{\scriptsize DtT-2L}
+& \multicolumn{1}{c}{\scriptsize LLM-2L} \\
+\cmidrule(lr){1-1} \cmidrule(lr){2-11}
+
+Macro-F1 &
+0.729$\pm$0.011 &
+0.702$\pm$0.017 &
+0.715$\pm$0.016 &
+0.706$\pm$0.022 &
+0.361$\pm$0.026 &
+0.276$\pm$0.014 &
+\underline{0.746$\pm$0.008} &
+0.741$\pm$0.003 &
+\textbf{0.747$\pm$0.008} &
+0.742$\pm$0.012 \\
+
+Macro-AUROC &
+0.920$\pm$0.001 &
+0.921$\pm$0.003 &
+0.924$\pm$0.002 &
+0.921$\pm$0.002 &
+0.750$\pm$0.004 &
+0.729$\pm$0.002 &
+0.926$\pm$0.001 &
+\underline{0.927$\pm$0.002} &
+0.926$\pm$0.002 &
+\textbf{0.928$\pm$0.001} \\
+
+\bottomrule
+\end{tabular}
+}
+\end{table}
+

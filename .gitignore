@@ -3,3 +3,8 @@
 
 # Ada Library Information
 *.ali
+
+/checkpoints
+/Model/BERT_pretrain
+/ECGFounder
+/cache

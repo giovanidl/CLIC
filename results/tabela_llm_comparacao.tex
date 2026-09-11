@@ -1,0 +1,32 @@
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[!h]
+\centering
+\caption{Comparison of LLM text generators for CLIC-LLM (mean $\pm$ std, frozen text embeddings, no finetuning). \textbf{Bold} indicates the best value in each column.}
+\label{tab:llm_comparison}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccc}
+\toprule
+\multirow{2}{*}{LLM}
+& \multicolumn{2}{c}{ResNet18 encoder}
+& \multicolumn{2}{c}{ECGFounder encoder} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+& Macro-F1 & Macro-AUROC
+& Macro-F1 & Macro-AUROC \\
+\midrule
+
+Llama 3.1:8b &
+0.706$\pm$0.022 & 0.921$\pm$0.002 &
+0.708$\pm$0.016 & \underline{0.923$\pm$0.001} \\
+
+Qwen3.5:9b &
+0.705$\pm$0.026 & 0.920$\pm$0.002 &
+0.704$\pm$0.013 & 0.920$\pm$0.002 \\
+
+Gemma4:12b &
+\textbf{0.719$\pm$0.009} & \textbf{0.922$\pm$0.003} &
+\textbf{0.714$\pm$0.011} & \textbf{0.924$\pm$0.002} \\
+
+\bottomrule
+\end{tabular}
+}
+\end{table}

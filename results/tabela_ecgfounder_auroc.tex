@@ -1,0 +1,58 @@
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[!h]
+\centering
+\caption{Class-wise and macro AUROC (mean $\pm$ std) --- ECGFounder encoder. \textbf{Bold} and \underline{underline} values indicate the best and second-best model for that column, respectively.}
+\label{tab:results_ecgfounder_auroc}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccc}
+\toprule
+Model & NORM (1004) & MI (544) & STTC (283) & CD (122) & HYP (245) & Macro-AUROC \\
+\midrule
+
+ECG Only &
+0.945$\pm$0.001 & 0.919$\pm$0.002 & 0.928$\pm$0.001 & \textbf{0.927$\pm$0.004} & 0.850$\pm$0.004 & 0.914$\pm$0.001 \\
+
+ECG+Attr &
+0.951$\pm$0.002 & 0.934$\pm$0.002 & 0.927$\pm$0.001 & 0.917$\pm$0.003 & 0.865$\pm$0.004 & 0.919$\pm$0.002 \\
+
+CLIC-DtT &
+\underline{0.954$\pm$0.001} & 0.940$\pm$0.001 & \textbf{0.932$\pm$0.002} & \underline{0.925$\pm$0.003} & 0.883$\pm$0.005 & 0.927$\pm$0.001 \\
+
+CLIC-LLM &
+0.953$\pm$0.001 & 0.937$\pm$0.002 & 0.929$\pm$0.001 & 0.924$\pm$0.003 & 0.875$\pm$0.005 & 0.923$\pm$0.001 \\
+
+CLIC-DtT-TextOnly &
+--- & --- & --- & --- & --- & --- \\
+
+CLIC-LLM-TextOnly &
+--- & --- & --- & --- & --- & --- \\
+
+CLIC-DtT-Finetuning &
+0.954$\pm$0.003 & \underline{0.941$\pm$0.003} & \underline{0.932$\pm$0.002} & 0.923$\pm$0.003 & \textbf{0.890$\pm$0.003} & \textbf{0.928$\pm$0.002} \\
+
+CLIC-LLM-Finetuning &
+\textbf{0.954$\pm$0.002} & \textbf{0.941$\pm$0.001} & 0.929$\pm$0.003 & 0.925$\pm$0.002 & \underline{0.887$\pm$0.003} & \underline{0.927$\pm$0.001} \\
+
+CLIC-DtT-2Layer-FT &
+0.927$\pm$0.006 & 0.917$\pm$0.002 & 0.867$\pm$0.007 & 0.853$\pm$0.007 & 0.836$\pm$0.009 & 0.880$\pm$0.004 \\
+
+CLIC-LLM-2Layer-FT &
+0.920$\pm$0.009 & 0.907$\pm$0.007 & 0.859$\pm$0.007 & 0.851$\pm$0.005 & 0.830$\pm$0.007 & 0.873$\pm$0.006 \\
+
+\bottomrule
+\end{tabular}
+}
+\end{table}
+% NOTA 1: linhas CLIC-DtT-TextOnly / CLIC-LLM-TextOnly em branco --
+% experimentos ja preparados (runs/ecgfounder/main_experiments_dtt_textonly.py
+% e main_experiments_llm_textonly.py), faltando so rodar e preencher.
+%
+% NOTA 2 (IMPORTANTE): as duas linhas *-2Layer-FT do ECGFounder (B2/B4: BERT
+% ultimas 2 camadas + 1 camada do ECGFounder destravadas) tem AUROC bem
+% abaixo de tudo mais na tabela (~0.87-0.88 vs ~0.92-0.93), inclusive abaixo
+% da propria versao frozen/BertOnly do mesmo texto. Isso ja é conhecido: e
+% um residuo do finetuning parcial do ECGFounder (mesmo apos o fix do bug de
+% BatchNorm em modo treino, que corrigiu um problema pior antes disso) --
+% investigacao ficou em aberto por decisao sua anteriormente. Vale decidir
+% se essas 2 linhas entram no artigo como estao (com essa ressalva explicita)
+% ou se ficam de fora ate investigar mais a fundo.
