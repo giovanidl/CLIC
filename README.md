@@ -3,7 +3,10 @@
 This is the official implementation of our paper "CLIC: GENERALIZABLE CONTEXTUAL LANGUAGE-INFORMED CARDIAC
 PATHOLOGY CLASSIFICATION ACROSS ENCODERS AND FINETUNING STRATEGIES"
 
-> Authors: Anonymous
+> Authors: Giovani Decico Lucafó, Diego Furtado Silva
+
+Institute of Mathematics and Computer Sciences (ICMC), 
+University of São Paulo (USP)
 
 
 
